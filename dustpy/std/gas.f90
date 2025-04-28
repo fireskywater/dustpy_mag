@@ -510,6 +510,7 @@ subroutine s_tot(s_ext, s_hyd, s, Nr)
    ! ----------
    ! s_ext(Nr) : External source terms
    ! s_hyd(Nr) : Hydrodynamic source terms
+   ! s_dw(Nr)  : Source terms from disk wind
    ! Nr : Number of radial grid cells
    !
    ! Returns
@@ -520,6 +521,7 @@ subroutine s_tot(s_ext, s_hyd, s, Nr)
 
    double precision, intent(in)  :: s_ext(Nr)
    double precision, intent(in)  :: s_hyd(Nr)
+   double precision, intent(in)  :: s_dw(Nr)
    double precision, intent(out) :: s(Nr)
    integer,          intent(in)  :: Nr
 
@@ -527,7 +529,7 @@ subroutine s_tot(s_ext, s_hyd, s, Nr)
 
    s(:) = s_hyd(:)
    do ir=2, Nr-1
-      s(ir) = s(ir) + s_ext(ir)
+      s(ir) = s(ir) + s_ext(ir) + s_dw(ir)
    end do
 
 
@@ -612,6 +614,7 @@ subroutine v_rad(A, B, eta, OmegaK, r, vv, vtor, v, Nr)
    ! r(Nr) : Radial grid cell centers
    ! vv(Nr) : Viscous gas velocity
    ! vtor(Nr) : Velocity contribution from torque
+   ! vdw(Nr)  : Velocity contribution from disk wind
    ! Nr : Number of radial grid cells
    !
    ! Returns
@@ -627,13 +630,14 @@ subroutine v_rad(A, B, eta, OmegaK, r, vv, vtor, v, Nr)
    double precision, intent(in)  :: r(Nr)
    double precision, intent(in)  :: vv(Nr)
    double precision, intent(in)  :: vtor(Nr)
+   double precision, intent(in)  :: vdw(Nr)
    double precision, intent(out) :: v(Nr)
    integer,          intent(in)  :: Nr
 
    double precision :: vb(Nr)
 
    vb(:) = 2.d0 * eta(:) * r(:) * OmegaK(:)
-   v(:) = A(:)*vv(:) + B(:)*vb(:) + vtor(:)
+   v(:) = A(:)*vv(:) + B(:)*vb(:) + vtor(:) + vdw(:)
 
 end subroutine v_rad
 
