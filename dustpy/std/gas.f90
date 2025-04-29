@@ -503,7 +503,7 @@ subroutine s_hyd(Fi, ri, Shyd, Nr)
 end subroutine s_hyd
 
 
-subroutine s_tot(s_ext, s_hyd, s, Nr)
+subroutine s_tot(s_ext, s_hyd, s_dw, s, Nr)
    ! Subrountine calculates the total gas source terms.
    !
    ! Parameters
@@ -602,7 +602,7 @@ subroutine timestep(S, Sigma, SigmaFloor, dt, Nr)
 end subroutine timestep
 
 
-subroutine v_rad(A, B, eta, OmegaK, r, vv, vtor, v, Nr)
+subroutine v_rad(A, B, eta, OmegaK, r, vv, vtor, vdw, v, Nr)
    ! Function calculates the radial gas velocity.
    !
    ! Parameters
