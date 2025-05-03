@@ -50,8 +50,8 @@ class Simulation(Frame):
                                                                   }
                                                                ),
                                        "gas": SimpleNamespace(**{"alpha": 1.e-3,
-                                                                 "alphaDiskwind":0.
-                                                                 "LambdaDiskwind":3.5
+                                                                 "alphaDiskwind":0.,
+                                                                 "LambdaDiskwind":3.5,
                                                                  "Mdisk": 0.05*c.M_sun,
                                                                  "mu": 2.3*c.m_p,
                                                                  "SigmaExp": -1.,
