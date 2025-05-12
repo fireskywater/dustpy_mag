@@ -431,7 +431,7 @@ def vdiskwind(sim):
     -------
     vdiskwind : Field
         Velocity contribution from disk winds"""
-    return -1.5*sim.diskwind.alpha * sim.gas.cs**2 / (sim.grid.r * sim.grid.OmegaK)
+    return -1.5*sim.gas.diskwind.alpha * sim.gas.cs**2 / (sim.grid.r * sim.grid.OmegaK)
 
 
 def vrad(sim):
