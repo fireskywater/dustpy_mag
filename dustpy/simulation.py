@@ -150,7 +150,7 @@ class Simulation(Frame):
         self.gas.boundary.inner = None
         self.gas.boundary.outer = None
         self.gas.cs = None
-        self.gas.diskwind = Group(self, decription="Disk wind parameters")
+        self.gas.diskwind = Group(self, description="Disk wind parameters")
         self.gas.diskwind.alpha = None
         self.gas.diskwind.Lambda = None
         self.gas.diskwind.S = None
